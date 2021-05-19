@@ -1,0 +1,14 @@
+a:hover {
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.nav__auth:before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 40px;
+    margin-right: 16px;
+    background-color: #fff;
+    opacity: .3;
+}

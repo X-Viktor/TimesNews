@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Список новостей | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <section class="all-news text-center pt-4 pb-4">
+        <div class="container">
+            <h2 class="subtitle">Список <span class="text-success">новостей</span></h2>
+            <div class="d-flex">
+                <div class="news d-flex flex-wrap flex-column">
+                    {% include 'inc/_news.html' %}
+
+                    {% if page_obj.has_other_pages %}
+                        {% include 'inc/_pagination.html' %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

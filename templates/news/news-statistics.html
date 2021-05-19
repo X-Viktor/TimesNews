@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Статистика новостей | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <section class="all-news text-center pt-4 pb-4">
+        <div class="container">
+            <h2 class="subtitle">Статистика <span class="text-success">новостей</span></h2>
+            <div class="mt-4 d-flex flex-wrap flex-column">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Заголовок</th>
+                        <th scope="col">Дата добавления</th>
+                        <th scope="col">Количество просмотров</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for n in news %}
+                        <tr>
+                            <td class="text-left">{{ n.title }}</td>
+                            <td>{{ n.date_creation|date:'d F Y' }}</td>
+                            <td>{{ n.views_count }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                {% if page_obj.has_other_pages %}
+                    {% include 'inc/_pagination.html' %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}

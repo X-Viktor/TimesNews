@@ -1,0 +1,24 @@
+{% for n in news %}
+    <div class="card text-left mt-3">
+        <div class="card-header text-muted d-flex">
+            {% for tag in n.tags.all %}
+                <h6 class="mr-2">{{ tag.tag }}</h6>
+            {% endfor %}
+        </div>
+        <a href="{% url 'news_detail' n.pk %}" class="text-dark">
+            <div class="card-body">
+                <h5 class="card-title">{{ n.title }}</h5>
+                <p class="card-text">{{ n.description|truncatewords:30 }}</p>
+            </div>
+        </a>
+        <div class="card-footer text-muted d-flex justify-content-between align-items-center">
+            <div>
+                <p class="mb-1">Опубликовано</p>
+                <h5>{{ n.date_creation|date:'d F Y' }}</h5>
+            </div>
+            <div class="text-right">
+                <p class="m-0">Просмотры: {{ n.views_count }}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
